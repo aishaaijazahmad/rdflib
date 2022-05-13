@@ -272,10 +272,7 @@ class URIRef(IdentifiedNode):
                     value += "#"
 
         if not _is_valid_uri(value):
-            logger.warning(
-                "%s does not look like a valid URI, trying to serialize this will break."
-                % value
-            )
+            raise ValueError("The URI %s is not valid" % value)
 
         try:
             rt = str.__new__(cls, value)
